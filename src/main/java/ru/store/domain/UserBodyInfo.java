@@ -5,11 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "KILOCALORIES")
-public class Kilocalories {
+@Table(name = "USER_BODY_INFO")
+public class UserBodyInfo {
 
-    @Column(name = "kcal", nullable = false)
-    private int kcalId;
+    @Column(name = "user_body_info_id", nullable = false)
+    private int userBodyInfoId;
 
     @Column
     private boolean gender;
@@ -26,12 +26,12 @@ public class Kilocalories {
     @Column(name = "Activity")
     private Activity activity;
 
-    public int getKcalId() {
-        return kcalId;
+    public int getUserBodyInfoId() {
+        return userBodyInfoId;
     }
 
-    public void setKcalId(int kcalId) {
-        this.kcalId = kcalId;
+    public void setUserBodyInfoId(int userBodyInfoId) {
+        this.userBodyInfoId = userBodyInfoId;
     }
 
     public boolean isGender() {
@@ -76,8 +76,8 @@ public class Kilocalories {
 
     @Override
     public String toString() {
-        return "Kilocalories{" +
-                "kcalId=" + kcalId +
+        return "UserBodyInfo{" +
+                "userBodyInfoId=" + userBodyInfoId +
                 ", gender=" + gender +
                 ", age=" + age +
                 ", height=" + height +

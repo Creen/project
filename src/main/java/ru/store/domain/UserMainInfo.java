@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "USERS_INFO")
-public class UserInfo {
+public class UserMainInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,7 +87,7 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
+        return "UserMainInfo{" +
                 "userInfoId='" + userInfoId + '\'' +
                 ", name='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +

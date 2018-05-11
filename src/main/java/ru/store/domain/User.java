@@ -20,7 +20,7 @@ public class User {
 
     @OneToOne
     @JoinColumn(name = "user_info_id")
-    private UserInfo userInfo;
+    private UserMainInfo userMainInfo;
 
     @OneToMany(mappedBy = "user")
     private List<Menu> menu;
@@ -49,12 +49,12 @@ public class User {
         this.password = password;
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public UserMainInfo getUserMainInfo() {
+        return userMainInfo;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public void setUserMainInfo(UserMainInfo userMainInfo) {
+        this.userMainInfo = userMainInfo;
     }
 
     public List<Menu> getMenu() {
@@ -71,7 +71,7 @@ public class User {
                 "userId='" + userId + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", userInfo=" + userInfo +
+                ", userMainInfo=" + userMainInfo +
                 ", menu=" + menu +
                 '}';
     }
