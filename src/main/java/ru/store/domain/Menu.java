@@ -12,13 +12,11 @@ public class Menu {
     @Column(name = "menu_id")
     private String menuId;
 
-    @Column
-    private String type;
+    //до запятой 6 знаков, после запятой 2 знака,
+    @Column(precision = 6, scale = 2)
+    private double price;
 
-    @Column
-    private String price;
-
-    @Column
+    @Column(length = 150)
     private String text;
 
     @Column
@@ -37,19 +35,11 @@ public class Menu {
         this.menuId = menuId;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -67,5 +57,16 @@ public class Menu {
 
     public void setMenuType(MenuType menuType) {
         this.menuType = menuType;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "menuId='" + menuId + '\'' +
+                ", price='" + price + '\'' +
+                ", text='" + text + '\'' +
+                ", menuType=" + menuType +
+                ", user=" + user +
+                '}';
     }
 }

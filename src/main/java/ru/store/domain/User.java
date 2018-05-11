@@ -10,12 +10,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private String userId;
+    private int userId;
 
-    @Column(name = "login", unique = true, nullable = false)
+    @Column(length = 40, unique = true, nullable = false)
     private String login;
 
-    @Column(name = "password", nullable = false)
+    @Column(length = 20, nullable = false)
     private String password;
 
     @OneToOne
@@ -25,11 +25,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Menu> menu;
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -63,5 +63,16 @@ public class User {
 
     public void setMenu(List<Menu> menu) {
         this.menu = menu;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", userInfo=" + userInfo +
+                ", menu=" + menu +
+                '}';
     }
 }
