@@ -18,12 +18,25 @@ public class User {
     @Column(length = 20, nullable = false)
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "user_info_id")
+    @OneToOne(optional = false, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_main_info_id")
     private UserMainInfo userMainInfo;
 
-    @OneToMany(mappedBy = "user")
-    private List<Menu> menu;
+    @OneToOne(optional = false, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_parameters_id")
+    private UserParameters userParameters;
+
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_menu_id")
+    private Menu menu;
+
+    public User() {
+    }
+
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 
     public int getUserId() {
         return userId;
@@ -57,22 +70,19 @@ public class User {
         this.userMainInfo = userMainInfo;
     }
 
-    public List<Menu> getMenu() {
+    public UserParameters getUserParameters() {
+        return userParameters;
+    }
+
+    public void setUserParameters(UserParameters userParameters) {
+        this.userParameters = userParameters;
+    }
+
+    public Menu getMenu() {
         return menu;
     }
 
-    public void setMenu(List<Menu> menu) {
+    public void setMenu(Menu menu) {
         this.menu = menu;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", userMainInfo=" + userMainInfo +
-                ", menu=" + menu +
-                '}';
     }
 }

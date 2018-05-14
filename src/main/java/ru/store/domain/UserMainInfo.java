@@ -6,11 +6,6 @@ import javax.persistence.*;
 @Table(name = "USERS_INFO")
 public class UserMainInfo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_info_id")
-    private int userInfoId;
-
     @Column(length = 40, nullable = false)
     private String firstname;
 
@@ -24,17 +19,21 @@ public class UserMainInfo {
     private String email;
 
     @Column
-    private String adress;
+    private String address;
 
-    @OneToOne(mappedBy = "userInfo")
+    @OneToOne(mappedBy = "userMainInfo")
     private User user;
 
-    public int getUserInfiId() {
-        return userInfoId;
+    public UserMainInfo() {
     }
 
-    public void setUserInfiId(int userInfiId) {
-        this.userInfoId = userInfiId;
+    public UserMainInfo(String firstname, String lastname, String phone, String email, String address, User user) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.user = user;
     }
 
     public String getFirstname() {
@@ -70,11 +69,11 @@ public class UserMainInfo {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public User getUser() {
@@ -88,12 +87,11 @@ public class UserMainInfo {
     @Override
     public String toString() {
         return "UserMainInfo{" +
-                "userInfoId='" + userInfoId + '\'' +
-                ", name='" + firstname + '\'' +
+                "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 ", user=" + user +
                 '}';
     }

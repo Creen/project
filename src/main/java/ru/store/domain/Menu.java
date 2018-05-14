@@ -1,71 +1,75 @@
 package ru.store.domain;
 
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "MENU")
 public class Menu {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_id")
-    private String menuId;
-
-    //до запятой 6 знаков, после запятой 2 знака,
-    @Column(precision = 6, scale = 2)
-    private double price;
-
-    @Column(length = 150)
-    private String text;
+    @Column(name = "menu_name")
+    private Target target;
 
     @Column
-    @Enumerated(value = EnumType.STRING)
-    private MenuType menuType;
+    private Days days;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "menu_dish_id")
+    private Dish dish;
 
-    public String getMenuId() {
-        return menuId;
+    @OneToMany(mappedBy = "menu")
+    private List<User> user;
+
+    public Menu() {
     }
 
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
+    public Menu(Target target, Days days, Dish dish, List<User> user) {
+        this.target = target;
+        this.days = days;
+        this.dish = dish;
+        this.user = user;
     }
 
-    public double getPrice() {
-        return price;
+
+    public Target getTarget() {
+        return target;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTarget(Target target) {
+        this.target = target;
     }
 
-    public String getText() {
-        return text;
+    public Days getDays() {
+        return days;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDays(Days days) {
+        this.days = days;
     }
 
-    public MenuType getMenuType() {
-        return menuType;
+    public Dish getDish() {
+        return dish;
     }
 
-    public void setMenuType(MenuType menuType) {
-        this.menuType = menuType;
+    public void setDish(Dish dish) {
+        this.dish = dish;
+    }
+
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "Menu{" +
-                "menuId='" + menuId + '\'' +
-                ", price='" + price + '\'' +
-                ", text='" + text + '\'' +
-                ", menuType=" + menuType +
+                "target=" + target +
+                ", days=" + days +
+                ", dish=" + dish +
                 ", user=" + user +
                 '}';
     }
