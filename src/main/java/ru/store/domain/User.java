@@ -38,6 +38,7 @@ public class User {
         this.password = password;
     }
 
+
     public int getUserId() {
         return userId;
     }
@@ -85,4 +86,6 @@ public class User {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
+
+
 }

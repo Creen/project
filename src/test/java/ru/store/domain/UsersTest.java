@@ -20,17 +20,20 @@ public class UsersTest {
 
     }
 
-    @Test
-    public void testCreateUser(){
-        User user = new User("Nikolai", "12345");
-        em.persist(user);
-    }
-
     @After
     public void end(){
         em.close();
         emf.close();
     }
+
+    @Test
+    public void testCreateUser(){
+        User user = new User("Nikolai", "12345");
+        em.persist(user);
+
+    }
+
+
 
 
 

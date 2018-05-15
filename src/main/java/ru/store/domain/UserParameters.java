@@ -1,13 +1,15 @@
 package ru.store.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "USER_PARAMETERS")
 public class UserParameters {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_parameters_id")
+    private int userParametersId;
 
     @Column(nullable = false)
     private String gender;

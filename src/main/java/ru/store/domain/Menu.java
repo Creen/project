@@ -7,6 +7,11 @@ import java.util.List;
 @Table(name = "MENU")
 public class Menu {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "menu_id")
+    private int menuId;
+
     @Column(name = "menu_name")
     private Target target;
 
